@@ -1,7 +1,7 @@
 # AR Glasses
 
 - model: [RealWear HMT-1](https://realwear.at/hmt-1/?keyword=realwear%20hmt%201&device=c&network=g&campaignid=12461183932&gclid=CjwKCAiAo4OQBhBBEiwA5KWu_8ekYhez1Gfo6hnIeIROSiillUNRqOw1z7C_q8JrjQA0BPXqxf3FChoCipoQAvD_BwE)
-- utilize [Kimoknow Object Detection API](https://www.kimoknow.de/) (developed at Karlsruhe Institute of Technology)
+- utilize [Kimoknow Object Detection API](https://www.kimoknow.de/) (developed at [Karlsruhe Institute of Technology](https://www.kit.edu/english/index.php))
 
 A JavaScript Webapp, which has etablished P2P connection to the object detection server, extracts videostream out of any browser (mobile, PC). The videostream is sent to the ML-trained classifier server, after classification being done, detection results will be sent back to user.
 
