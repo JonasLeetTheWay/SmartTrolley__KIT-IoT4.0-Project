@@ -15,7 +15,7 @@ Traditionally, warehouse picker holds a picklist in hand, ready to load the prod
 With our solution, warehouse picker don't need to hold picklist in hand anymore, instead he can look at picklist shown inside AR Glasses he wear, and start loading products right away. He also don't need to remember the quantity of loaded products, and logged the data to ERP database by hand. He can solely focus on loading product, because our program automates this database logging. This is possible because we capitalizes on the power of IoT 4.0 technology, with following devices and platform:
 1. Raspberry Pi 4
 2. ESP32
-3. AR Glasses
+3. AR Glasses ([RealWear HMT-1](https://realwear.at/hmt-1/?keyword=realwear%20hmt%201&device=c&network=g&campaignid=12461183932&gclid=CjwKCAiAo4OQBhBBEiwA5KWu_8ekYhez1Gfo6hnIeIROSiillUNRqOw1z7C_q8JrjQA0BPXqxf3FChoCipoQAvD_BwE))
 4. open-source [ERP system Odoo](https://www.odoo.com/)
 ## Use-case scenario
 
