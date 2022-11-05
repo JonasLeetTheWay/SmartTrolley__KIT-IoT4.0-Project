@@ -22,7 +22,7 @@ Start the Webserver using:
 
 ## Kimoknow Object Detection Basic API calls:
 
-### classification/detection models
+* classification/detection models
 
 | type |	data |
 |------|---------|
@@ -31,27 +31,27 @@ Start the Webserver using:
 |"select_detection_model"|	"modelName"|
 |"delete_detection_model"|	"modelName"|
 
-### labelListClassification
+* labelListClassification
 
 | type |	data |
 |------|---------|
 |"labelList"|	{"model":current_classificationModel,"labels":labellistClassification}|
 
 
-### labelListDetection
+* labelListDetection
 
 | type |	data |
 |------|---------|
 |"labelListDetection"|	[labellistDetection...]|
 
-### labelData classification/detection
+* labelData classification/detection
 
 | type |	data |
 |------|---------|
 |"labeldata"|	{"type":"classification","label":<labelName>,"conf":<value as float between 0 and 1 e.g. 0.1>}|
 |"labeldata"|	{see detectionData}|
 
-### detectionData
+* detectionData
 
 | type |	data |
 |------|---------|
