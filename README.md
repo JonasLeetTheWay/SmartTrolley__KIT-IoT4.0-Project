@@ -119,9 +119,9 @@ trolley-mounter
 
 ### Fully-assembled product
 
-<img src="https://firebasestorage.googleapis.com/v0/b/linemsgapi-v2.appspot.com/o/github%2Fview5.jpg?alt=media&token=eda61c04-3691-41ee-84a4-15b3e008f078" width="500" />
+<img src="https://firebasestorage.googleapis.com/v0/b/linemsgapi-v2.appspot.com/o/github%2Fview5.jpg?alt=media&token=eda61c04-3691-41ee-84a4-15b3e008f078" width="400" />
 
-<img src="https://firebasestorage.googleapis.com/v0/b/linemsgapi-v2.appspot.com/o/github%2Fview6.jpg?alt=media&token=0b0f082f-7a3f-4ec5-ba64-ce7c113e4344" width="500" />
+<img src="https://firebasestorage.googleapis.com/v0/b/linemsgapi-v2.appspot.com/o/github%2Fview6.jpg?alt=media&token=0b0f082f-7a3f-4ec5-ba64-ce7c113e4344" width="400" />
 
 </p></details>
 
