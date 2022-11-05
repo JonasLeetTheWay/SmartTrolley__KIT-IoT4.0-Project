@@ -1,0 +1,144 @@
+/*
+    This code is currently specified for one scale input from a HX711-20 Wägzelle.
+    The blue cable needs to be connected to GND, the red one to VIN, the yellow one to D18, the green one to D19.
+*/    
+
+#include <Arduino.h>
+#include <PubSubClient.h>
+#include <WiFi.h> 
+#include <tuple>
+#include <HX711.h>
+using namespace std;
+
+
+// Constants for WiFi and MQTT Server connection
+const char* ssid = "KIT-IoT";
+const char* password = "68Yh*N#oJJoYCTeXQYj]1<+W";  // "xak@;?>(7wlz;<ctR2ZDqe}^";
+const char* broker = "imi-i40-mqtt.imi.kit.edu";
+const char* outTopic = "trolley";
+WiFiClient espClient;
+PubSubClient client(espClient);
+
+
+// for more info look here: https://www.instructables.com/How-to-Interface-HX711-Balance-Module-With-Load-Ce/
+HX711 hx = HX711();
+float calibration_factor = 2100; // this calibration factor needs to be adjusted !!
+float units;
+float oldUnits;
+float tolerance = 0.5; // needs to be adjusted !!
+
+
+// Variables, specifiy for each trolley
+int trolleyId = 3;
+tuple<int, float> section00 = make_tuple(0 ,3.7);
+tuple<int, float> section01 = make_tuple(1 ,5.0);
+tuple<int, float> section02 = make_tuple(2 ,7.4);
+tuple<int, float> section03 = make_tuple(3 ,0.0);
+tuple<int, float> sections[] = {section00, section01, section02, section03};
+
+
+// function to (re)connect to mqtt server
+void reconnectMqtt(){
+  while (!client.connected()){
+    Serial.print("\nConnecting to ");
+    Serial.println(broker);
+    if(client.connect("randomID-jgkuzduzi")){
+      Serial.print("\nConnected to ");
+      Serial.println(broker);
+    } else {
+      Serial.println("\nTrying to connect again");
+      delay(5000);
+    }
+  }
+}
+
+// function to (re)connect to WiFi
+void reconnectWiFi(){
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED){
+    Serial.print("\nConnecting to ");
+    Serial.println(ssid);
+    delay(500);
+  }
+  Serial.print("\nConnected to ");
+  Serial.println(ssid);
+}
+
+// compile message inclusing all sections and weights in specified .json format
+String getMessage(){
+  String msg = "{\"trolley_id\": " + String(trolleyId) + ", \"sections\": [";
+  for(int i = 0; i < sizeof(sections)/sizeof(sections[0]); i++){
+    if(i != 0){
+      msg += ",";
+    }
+    msg += "{\"section\": " + String(get<0>(sections[i])) + ",\"weight\": " + String(get<1>(sections[i])) + "}";
+  }
+  msg +=  "]}";
+  return msg;
+}
+
+// sends mqtt message with lastr saved scale values
+void sendMessage(){
+  String msg = getMessage();
+  const char* str = msg.c_str();
+  client.publish(outTopic, str);
+}
+
+// reads value from scale and compares to last saved value, if difference is bigger than tolerance value, it sends mqtt message
+void check_values(){
+  hx.set_scale(calibration_factor);
+   
+  units = hx.get_units();
+
+  if (units < 0){
+    units = oldUnits;
+  } else {
+    oldUnits = units;
+  }
+
+  if(units >= get<1>(section00) + tolerance || units <= get<1>(section00) - tolerance ) {
+    section00 = make_tuple(0, units);
+    sendMessage();
+  }
+
+}
+
+
+
+// Setup function which will run once in beginning
+void setup() {
+  Serial.begin(921600); // initialize monitor (has to be thae same as in platformio.ini)
+  // Serial.println(WiFi.macAddress());
+  client.setServer(broker, 1883); // set server Port (Mqtt)
+
+  hx.begin(19, 18); // sepicify data and clock port
+  hx.set_scale();
+  hx.tare();  //Reset the scale to 0
+}
+
+// loop function which will run repeatedly after setup()
+void loop() {
+  
+  // check WiFi status test
+  if(WiFi.status() != WL_CONNECTED){
+    reconnectWiFi();
+  }
+  
+  // check mqtt server status
+  if(!client.connected()){
+    reconnectMqtt();
+  }
+  client.loop();
+  
+
+  // check scale values every 3 seconds
+  delay(100);
+  check_values();
+
+  //print the message "msg" in console
+  Serial.println(units);
+  
+
+
+}
+

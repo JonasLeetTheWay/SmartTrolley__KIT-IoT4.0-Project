@@ -1,0 +1,9 @@
+[submodule "maincommunicator"]
+	path = maincommunicator
+	url = git@git.scc.kit.edu:imi/i40-projekte/ws21-22/maincommunicator.git
+[submodule "smartbrille"]
+	path = smartbrille
+	url = git@git.scc.kit.edu:imi/i40-projekte/ws21-22/smartbrille.git
+[submodule "odooMqttConnect"]
+	path = odooMqttConnect
+	url = git@git.scc.kit.edu:imi/i40-projekte/ws21-22/odooconnect.git

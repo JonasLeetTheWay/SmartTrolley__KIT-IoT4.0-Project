@@ -1,0 +1,23 @@
+{
+    "trolley_id": 3,
+    "sections": [
+        {
+            "section":0,
+            "weight": 3.7
+        },
+        {
+            "section":1,
+            "weight": 5.0
+        },
+        {
+            "section":2,
+            "weight": 7.4
+        },
+        {
+            "section":3,
+            "weight": 0.0
+        }
+    ]
+    
+
+}
