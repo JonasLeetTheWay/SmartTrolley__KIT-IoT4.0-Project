@@ -22,7 +22,7 @@ Start the Webserver using:
 
 ## Kimoknow Object Detection Basic API calls:
 
-* classification/detection models
+1/. classification/detection models
 
 | type |	data |
 |------|---------|
