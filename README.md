@@ -9,20 +9,22 @@ We work with [ELABO company](https://www.elabo.com/), our goal is to `speed up p
 
 > Our scenario is based on a lot of preparatory work by students from previous semesters, which needs to be expanded. They have already dealt extensively with the assembly tables provided by Elabo and their integration into the I4.0 world.
 
-### Our Solution
-Traditionally, warehouse picker holds a picklist, ready to load the products into warehouse trolley. He has to pick product and manually record added product quantity to the paper, then register into ERP database.
+## Our Solution
+Traditionally, warehouse picker holds a picklist in hand, ready to load the products into warehouse trolley. He has to pick product and manually record added product quantity to the paper, then register into ERP database.
 
-With our solution, we ease product loading process, as well as decreasing workflow time for warehouse picker. He can solely focus on loading product, not need to manually logging in data to ERP database. This is possible because we capitalizes on the power of IoT 4.0 technology, with following devices and platform:
+With our solution, warehouse picker don't need to hold picklist in hand anymore, instead he can look at picklist shown inside AR Glasses he wear, and start loading products right away. He also don't need to remember the quantity of loaded products, and logged the data to ERP database by hand. He can solely focus on loading product, because our program automates this database logging. This is possible because we capitalizes on the power of IoT 4.0 technology, with following devices and platform:
 1. Raspberry Pi 4
 2. ESP32
 3. AR Glasses
 4. open-source [ERP system Odoo](https://www.odoo.com/)
 
-![Showcase GIF](https://user-images.githubusercontent.com/75115433/200120846-77ed219c-fc2e-420e-85de-b1656d96063b.gif)
+## Use-case scenario
+
+![Showcase GIF](https://user-images.githubusercontent.com/75115433/200133023-c3c923bc-36bb-4c16-ad84-4edad348aef3.gif)
 
 https://youtu.be/AnJoZm1XY_Q
-### Project Poster
-
+## Project Poster
+<img src="https://firebasestorage.googleapis.com/v0/b/linemsgapi-v2.appspot.com/o/github%2FProject_Poster.jpg?alt=media&token=e4243d53-64e3-466d-be70-52d5d13d5f4b" width="700" />
 
 <details><summary> Hardware </summary> <p>
 

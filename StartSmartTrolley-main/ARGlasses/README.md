@@ -7,8 +7,8 @@ A JavaScript Webapp, which has etablished P2P connection to the object detection
 
 ### Requirements
 Node.js and npm have to be installed
-- https://nodejs.org/en/download/
-- https://docs.npmjs.com/downloading-and-installing-node-js-and-npm 
+https://nodejs.org/en/download/
+https://docs.npmjs.com/downloading-and-installing-node-js-and-npm 
 
 ### Repo Init
 Open the repository from command line
