@@ -8,11 +8,13 @@ The ESP32 is an affordable, low-power board with Wi-Fi and dual-mode Bluetooth t
 The Kali and Mess codes were written in C++ using the HX711-ADC library. This code enables the sensors to be calibrated through a tare process like a normal scale (a calibration constant is automatically calculated at the beginning of the program and can then be manually changed thereafter), and the regular measurement of the weight values ​​thereafter. For more information about the HX711-ADC library please see: https://github.com/olkal/HX711_ADC
 
 <img src="https://firebasestorage.googleapis.com/v0/b/linemsgapi-v2.appspot.com/o/github%2Fesp32_pins.png?alt=media&token=1e3b6ce6-72a9-47c0-9970-7190bf96a212" width="500" />
+
 https://randomnerdtutorials.com/getting-started-with-esp32/
-### pins used
+
+### Used Pins
 The connection between the ESP32 and the amplifier is made as follows: the GND bases are connected via the blue wire; the VCC pin is connected to the ESP32's Vin pin via the red wire; the data pin (DT) is connected to pin 19 via the green wire; the clock pin (SCK) is connected to pin 18 via the yellow wire. The connection between the amplifier and the strain gauge sensor is described in the "SG Sensors" section.
 
-## DMS Sensors
+## DMS Strain Gauge Sensors
 ### How does the strain gauge sensor work?
 
 The strain gauge sensors calculate the weight on them based on the deformation (stress) caused. The sensor consists of a series of resistors (4 resistors forming the so-called Wheatstone bridge) whose resistance value changes depending on the deformation. The weight of the object placed on the sensor can be calculated from the fluctuations in this value and the corresponding voltage in the circuit.
@@ -34,7 +36,6 @@ The main instability factors were mitigated by an appropriate design of the sens
 
 
 ## Load Cell
-
 Load cells are a form of force sensor typically used to measure weight.
 
 When a weight is placed on the load cell, the geometry of the load cell changes slightly due to the bending stress experienced by the cell. The change in geometry is then determined by a DMS sensor or a force transducer. DMS sensors are strain gauges, these were described in a previous chapter. In connection with the load cell, force transducers are usually spring bodies made of metal. These convert a geometric deformation into an electrical signal. This electrical signal is then translated into a weight.
@@ -74,6 +75,7 @@ trolley-mounter
 <img src="https://firebasestorage.googleapis.com/v0/b/linemsgapi-v2.appspot.com/o/github%2Fview4.jpg?alt=media&token=ad4263ec-b3f8-41cd-957c-a33037cc340b" width="400" />
 
 ### Fully-assembled product
-<img src="https://firebasestorage.googleapis.com/v0/b/linemsgapi-v2.appspot.com/o/github%2Fview5.jpg?alt=media&token=eda61c04-3691-41ee-84a4-15b3e008f078" width="933" height="700" />
 
-<img src="https://firebasestorage.googleapis.com/v0/b/linemsgapi-v2.appspot.com/o/github%2Fview6.jpg?alt=media&token=0b0f082f-7a3f-4ec5-ba64-ce7c113e4344" width="500" height="900" />
+<img src="https://firebasestorage.googleapis.com/v0/b/linemsgapi-v2.appspot.com/o/github%2Fview5.jpg?alt=media&token=eda61c04-3691-41ee-84a4-15b3e008f078" width="500" />
+
+<img src="https://firebasestorage.googleapis.com/v0/b/linemsgapi-v2.appspot.com/o/github%2Fview6.jpg?alt=media&token=0b0f082f-7a3f-4ec5-ba64-ce7c113e4344" width="500" />

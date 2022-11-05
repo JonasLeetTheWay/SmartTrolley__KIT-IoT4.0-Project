@@ -5,14 +5,18 @@ Today's market is characterized by ever faster development and market launch tim
 We work with [ELABO company](https://www.elabo.com/), our goal is to `speed up product delivery time`, so that warehouse picker (worker) can load products need to be delivered to customers quicker.
 - provide AR Glasses UI for worker to quickly glance the products he need to load 
 - automate the data logging to ERP database (so worker don't have to manually type in the data to ERP database in PC)
-- utilize state-of-the-art industrial IoT 4.0 communication protocol MQTT
+- utilize state-of-the-art [industrial IoT 4.0 communication protocol MQTT](https://mqtt.org/)
 
 > Our scenario is based on a lot of preparatory work by students from previous semesters, which needs to be expanded. They have already dealt extensively with the assembly tables provided by Elabo and their integration into the I4.0 world.
 
 ### Our Solution
 Traditionally, warehouse picker holds a picklist, ready to load the products into warehouse trolley. He has to pick product and manually record added product quantity to the paper, then register into ERP database.
 
-With our solution, by using IoT 4.0 technology, we capitalizing on the possibility of microcontrollers, AR Glasses, free open-source ERP system Odoo, provide the ease of product loading process, as well as decreasing workflow time. 
+With our solution, we ease product loading process, as well as decreasing workflow time for warehouse picker. He can solely focus on loading product, not need to manually logging in data to ERP database. This is possible because we capitalizes on the power of IoT 4.0 technology, with following devices and platform:
+1. Raspberry Pi 4
+2. ESP32
+3. AR Glasses
+4. open-source [ERP system Odoo](https://www.odoo.com/)
 
 ![Showcase GIF](https://user-images.githubusercontent.com/75115433/200120846-77ed219c-fc2e-420e-85de-b1656d96063b.gif)
 
@@ -46,11 +50,13 @@ The ESP32 is an affordable, low-power board with Wi-Fi and dual-mode Bluetooth t
 The Kali and Mess codes were written in C++ using the HX711-ADC library. This code enables the sensors to be calibrated through a tare process like a normal scale (a calibration constant is automatically calculated at the beginning of the program and can then be manually changed thereafter), and the regular measurement of the weight values ​​thereafter. For more information about the HX711-ADC library please see: https://github.com/olkal/HX711_ADC
 
 <img src="https://firebasestorage.googleapis.com/v0/b/linemsgapi-v2.appspot.com/o/github%2Fesp32_pins.png?alt=media&token=1e3b6ce6-72a9-47c0-9970-7190bf96a212" width="500" />
+
 https://randomnerdtutorials.com/getting-started-with-esp32/
-### pins used
+
+### Used Pins
 The connection between the ESP32 and the amplifier is made as follows: the GND bases are connected via the blue wire; the VCC pin is connected to the ESP32's Vin pin via the red wire; the data pin (DT) is connected to pin 19 via the green wire; the clock pin (SCK) is connected to pin 18 via the yellow wire. The connection between the amplifier and the strain gauge sensor is described in the "SG Sensors" section.
 
-## DMS Sensors
+## DMS Strain Gauge Sensors
 ### How does the strain gauge sensor work?
 
 The strain gauge sensors calculate the weight on them based on the deformation (stress) caused. The sensor consists of a series of resistors (4 resistors forming the so-called Wheatstone bridge) whose resistance value changes depending on the deformation. The weight of the object placed on the sensor can be calculated from the fluctuations in this value and the corresponding voltage in the circuit.
@@ -73,6 +79,7 @@ The main instability factors were mitigated by an appropriate design of the sens
 
 ## Load Cell
 Load cells are a form of force sensor typically used to measure weight.
+
 When a weight is placed on the load cell, the geometry of the load cell changes slightly due to the bending stress experienced by the cell. The change in geometry is then determined by a DMS sensor or a force transducer. DMS sensors are strain gauges, these were described in a previous chapter. In connection with the load cell, force transducers are usually spring bodies made of metal. These convert a geometric deformation into an electrical signal. This electrical signal is then translated into a weight.
 For our project we tested several load cells. We chose a load cell with a maximum load capacity of 5 kg because it has the smallest error tolerance and the maximum load capacity is sufficient for our application.
 
@@ -130,9 +137,12 @@ The Odoo Mqtt Connector consists of 3 modules:
 2. The connection to the Odoo server running at http://imi-odoo-2004.imi.kit.edu:8069 in the i40lab VLAN
 3. The main module in which the connections are started and monitored.
 
-Modules 1 and 2 are implemented in the mqttInterface.py and odooInterface.py files and are just simple facades.
+Modules 1 and 2 are implemented in the mqttInterface.py and odooInterface.py respectively, but the real communication happens at Module 3.
 
-Module 3 is implemented in odoo_mqtt_connector.py. A message that arrives at MQTT on the subject of Odoo/in is disassembled here and sent to Odoo in an Odoo-readable format. Odoo's response is simply sent back to MQTT on the rpi/odoo/out topic.
+Module 3 is implemented in odoo_mqtt_connector.py. 
+- messages that being published to MQTT broker labeled with topic 'odoo/in' are processed here by Raspberry Pi
+- then sent to Odoo in an Odoo-readable format
+- Odoo's response is then sent back to MQTT broker labeled with topic 'rpi/odoo/out'
 
 ### Run
 `python3 ./odoo_mqtt_connector.py`
@@ -144,7 +154,7 @@ Module 3 is implemented in odoo_mqtt_connector.py. A message that arrives at MQT
 
 Main Communicator consists of just one module implemented in `main.py`.
 
-First, a connection to MQTT is established. When messages are received, they are sorted by sender. Then Dict.update() is used to save the latest messages from ESP, Odoo or object recognition.
+First, a connection to MQTT broker is established. When messages are received, they are sorted by sender sent times. Then Dict.update() is used to save the latest messages from ESP, Odoo or AR Glasses.
 
 Then the main routine is started. This always checks whether new messages have arrived. If so, the workflow is progressed further, otherwise it waits.
 
@@ -208,15 +218,13 @@ The battery life test has shown that the battery can operate the ESP32 for about
 
 - Combination with RFID antennas or GPS sensor to find trolley in warehouse​
 - Visual or audible alerts regarding the inventory status of the trolley​
-
- <img src="https://firebasestorage.googleapis.com/v0/b/linemsgapi-v2.appspot.com/o/github%2Fsignal_lighter.png?alt=media&token=ac19fec9-ef74-4955-ab47-552d74801ec8" width="200" />
- 
 - Integrate more than one trolley compartment
 - Extension of QR code trolley recognition ​
 - Add storage compartment (in table for rough orientation)
 - Implement ESP program with "Sleep" function so that the battery lasts longer when the trolley is not used.
 - Replace the power bank with a lithium cell 18650 to keep the cost of the project low.
 
+ <img src="https://firebasestorage.googleapis.com/v0/b/linemsgapi-v2.appspot.com/o/github%2Fsignal_lighter.png?alt=media&token=ac19fec9-ef74-4955-ab47-552d74801ec8" width="200" />
 <img src="https://firebasestorage.googleapis.com/v0/b/linemsgapi-v2.appspot.com/o/github%2Flithium_battery_18650.png?alt=media&token=1866cb0f-37f6-4fac-9970-47489a1c3806" width="200" />
 
 </p></details>
