@@ -24,7 +24,7 @@ With our solution, warehouse picker don't need to hold picklist in hand anymore,
 https://youtu.be/AnJoZm1XY_Q
 ## Project Poster
 
-<img src="https://firebasestorage.googleapis.com/v0/b/linemsgapi-v2.appspot.com/o/github%2FProject_Poster.jpg?alt=media&token=e4243d53-64e3-466d-be70-52d5d13d5f4b" width="450" />
+<img src="https://firebasestorage.googleapis.com/v0/b/linemsgapi-v2.appspot.com/o/github%2FProject_Poster.jpg?alt=media&token=3bd0cacf-7590-4e0f-8cca-cbf4d85acb06" width="450" />
 
 <details><summary> Hardware </summary> <p>
 
@@ -85,7 +85,7 @@ Load cells are a form of force sensor typically used to measure weight.
 When a weight is placed on the load cell, the geometry of the load cell changes slightly due to the bending stress experienced by the cell. The change in geometry is then determined by a DMS sensor or a force transducer. DMS sensors are strain gauges, these were described in a previous chapter. In connection with the load cell, force transducers are usually spring bodies made of metal. These convert a geometric deformation into an electrical signal. This electrical signal is then translated into a weight.
 For our project we tested several load cells. We chose a load cell with a maximum load capacity of 5 kg because it has the smallest error tolerance and the maximum load capacity is sufficient for our application.
 
-<img src="https://firebasestorage.googleapis.com/v0/b/linemsgapi-v2.appspot.com/o/github%2Floadcell.jpg?alt=media&token=d2fec54b-d42c-4418-9c98-75a8a7b24305" width="400" />
+<img src="https://firebasestorage.googleapis.com/v0/b/linemsgapi-v2.appspot.com/o/github%2Floadcell.jpg?alt=media&token=fccb5e6d-7b62-4296-aee7-fa72f4fe9be0" width="400" />
 
 
 ## 3D Printing Parts
@@ -120,9 +120,9 @@ trolley-mounter
 
 ### Fully-assembled product
 
-<img src="https://firebasestorage.googleapis.com/v0/b/linemsgapi-v2.appspot.com/o/github%2Fview5.jpg?alt=media&token=eda61c04-3691-41ee-84a4-15b3e008f078" width="400" />
+<img src="https://firebasestorage.googleapis.com/v0/b/linemsgapi-v2.appspot.com/o/github%2Fview5.jpg?alt=media&token=c1d41686-4397-4bb3-bab4-244e1a5bc774" width="400" />
 
-<img src="https://firebasestorage.googleapis.com/v0/b/linemsgapi-v2.appspot.com/o/github%2Fview6.jpg?alt=media&token=0b0f082f-7a3f-4ec5-ba64-ce7c113e4344" width="400" />
+<img src="https://firebasestorage.googleapis.com/v0/b/linemsgapi-v2.appspot.com/o/github%2Fview6.jpg?alt=media&token=d164458d-a550-4e72-8ea4-a9d4d1afef9d" width="400" />
 
 </p></details>
 
