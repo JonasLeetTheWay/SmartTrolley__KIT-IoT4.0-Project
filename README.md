@@ -17,7 +17,6 @@ With our solution, warehouse picker don't need to hold picklist in hand anymore,
 2. ESP32
 3. AR Glasses
 4. open-source [ERP system Odoo](https://www.odoo.com/)
-
 ## Use-case scenario
 
 ![Showcase GIF](https://user-images.githubusercontent.com/75115433/200133023-c3c923bc-36bb-4c16-ad84-4edad348aef3.gif)
