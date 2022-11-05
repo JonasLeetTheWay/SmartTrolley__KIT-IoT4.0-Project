@@ -18,7 +18,7 @@ With our solution, we ease product loading process, as well as decreasing workfl
 3. AR Glasses
 4. open-source [ERP system Odoo](https://www.odoo.com/)
 
-![Showcase GIF](https://user-images.githubusercontent.com/75115433/200120846-77ed219c-fc2e-420e-85de-b1656d96063b.gif)
+![Showcase GIF](https://user-images.githubusercontent.com/75115433/200133023-c3c923bc-36bb-4c16-ad84-4edad348aef3.gif)
 
 https://youtu.be/AnJoZm1XY_Q
 ### Project Poster
