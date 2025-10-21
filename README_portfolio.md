@@ -56,22 +56,24 @@ The integration between hardware sensors and enterprise systems was achieved thr
 ```mermaid
 graph TB
     subgraph "Warehouse Floor"
-        A[ESP32 with Load Cells] --> B[MQTT Broker]
-        C[AR Glasses] --> B
-        D[Worker] --> C
+        A[Worker with AR Glasses] --> B[Warehouse Slot with Load Cell]
+        B --> C[ESP32 Sensor]
+        C --> D[MQTT Broker]
+        E[AR Glasses UI] --> A
+        E --> D
     end
     
     subgraph "Control Center"
-        B --> E[Raspberry Pi 4]
-        E --> F[Main Communicator]
-        E --> G[Odoo MQTT Connector]
-        G --> H[Odoo ERP System]
+        D --> F[Raspberry Pi 4]
+        F --> G[Main Communicator]
+        F --> H[Odoo MQTT Connector]
+        H --> I[Odoo DB]
     end
     
     subgraph "Data Flow"
-        I[Weight Data] --> A
-        J[Pick List] --> C
-        K[Inventory Updates] --> H
+        J[Pick List Display] --> E
+        K[Weight Detection] --> C
+        L[Inventory Update +/-1] --> I
     end
 ```
 
@@ -80,19 +82,22 @@ graph TB
 sequenceDiagram
     participant Worker
     participant ARGlasses
+    participant LoadCell
     participant ESP32
     participant MQTT
-    participant RPi
-    participant Odoo
+    participant RaspberryPi4
+    participant OdooDB
 
     Worker->>ARGlasses: View Pick List
-    ESP32->>MQTT: Publish Weight Data
-    MQTT->>RPi: Forward Sensor Data
-    RPi->>Odoo: Update Inventory
-    Odoo->>RPi: Confirm Update
-    RPi->>MQTT: Publish Status
-    MQTT->>ARGlasses: Update UI
-    ARGlasses->>Worker: Show Progress
+    Worker->>LoadCell: Place/Remove Item
+    LoadCell->>ESP32: Weight Change Detected
+    ESP32->>MQTT: Publish Inventory Update (+1/-1)
+    MQTT->>RaspberryPi4: Forward Sensor Data
+    RaspberryPi4->>OdooDB: Update Inventory Count
+    OdooDB->>RaspberryPi4: Confirm Update
+    RaspberryPi4->>MQTT: Publish Status
+    MQTT->>ARGlasses: Update UI Progress
+    ARGlasses->>Worker: Show Updated Pick List
 ```
 
 ### Data Processing Pipeline
