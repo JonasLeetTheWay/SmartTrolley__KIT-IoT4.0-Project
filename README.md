@@ -21,7 +21,7 @@ With our solution, warehouse picker don't need to hold picklist in hand anymore,
 
 ![Showcase GIF](https://user-images.githubusercontent.com/75115433/200133023-c3c923bc-36bb-4c16-ad84-4edad348aef3.gif)
 
-https://youtu.be/AnJoZm1XY_Q
+[https://youtu.be/AnJoZm1XY_Q](https://www.youtube.com/watch?v=YHgO-ZjQ610)
 ## Project Poster
 
 <img src="https://firebasestorage.googleapis.com/v0/b/linemsgapi-v2.appspot.com/o/github%2FProject_Poster.jpg?alt=media&token=3bd0cacf-7590-4e0f-8cca-cbf4d85acb06" width="450" />
